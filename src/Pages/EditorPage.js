@@ -12,7 +12,7 @@ const EditorPage = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch("http://localhost:4000/post/" + id).then((response) => {
+    fetch("https://blog-syj3.onrender.com/post/" + id).then((response) => {
       response.json().then((postInfo) => {
         setTitle(postInfo.title);
         setSummary(postInfo.summary);
@@ -35,7 +35,7 @@ const EditorPage = () => {
 
     e.preventDefault();
 
-    const response = await fetch("http://localhost:4000/post", {
+    const response = await fetch("https://blog-syj3.onrender.com/post", {
       method: "PUT",
       body: data,
       credentials: "include",

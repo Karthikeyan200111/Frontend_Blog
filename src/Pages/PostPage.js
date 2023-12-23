@@ -19,7 +19,7 @@ const PostPage = () => {
   useEffect(() => {
     const fetchPostInfo = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/post/${id}`);
+        const response = await fetch(`https://blog-syj3.onrender.com/post/${id}`);
         if (!response.ok) {
           throw new Error("Failed to fetch post information");
         }
@@ -62,7 +62,7 @@ const PostPage = () => {
 
   async function deletePost() {
     try {
-      const response = await fetch(`http://localhost:4000/post/${postInfo._id}`, {
+      const response = await fetch(`https://blog-syj3.onrender.com/post/${postInfo._id}`, {
         method: 'DELETE',
         credentials: 'include',
       });
@@ -85,7 +85,7 @@ const PostPage = () => {
     <div className={`flex flex-col gap-10 items-center `}>
       <div className="md:w-2/3 w-full">
         <img
-          src={`http://localhost:4000/${postInfo.files}`}
+          src={`https://blog-syj3.onrender.com/${postInfo.files}`}
           alt={postInfo.title}
           className='rounded-md'
         />

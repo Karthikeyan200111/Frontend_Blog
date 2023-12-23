@@ -26,8 +26,9 @@ const CreatePost = () => {
 
     
     e.preventDefault()
+    //http://localhost:4000/
 
-    const response=await fetch("http://localhost:4000/post",{
+    const response=await fetch("https://blog-syj3.onrender.com/post",{
       method:'POST',
       body:data,
       credentials:'include'

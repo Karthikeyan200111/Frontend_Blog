@@ -15,7 +15,7 @@ export default function Header() {
   const [loadingS, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:4000/profile', {
+    fetch('https://blog-syj3.onrender.com/profile', {
       credentials: 'include'
     })
       .then((response) => {
@@ -31,7 +31,7 @@ export default function Header() {
   }, [setUserInfo]);
 
  async function logout() {
-    const response=await fetch('http://localhost:4000/logout', {
+    const response=await fetch('https://blog-syj3.onrender.com/logout', {
       credentials: 'include',
       method: 'POST'
     });

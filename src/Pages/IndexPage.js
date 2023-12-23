@@ -7,7 +7,7 @@ export default function IndexPage() {
   const [loading, setLoading] = useState(true); // Add loading state
 
   useEffect(() => {
-    fetch("http://localhost:4000/post")
+    fetch("https://blog-syj3.onrender.com/post")
       .then((response) => response.json())
       .then((posts) => {
         setPosts(posts);
