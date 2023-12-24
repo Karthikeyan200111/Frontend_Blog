@@ -39,7 +39,11 @@ export default function RegisterPage(){
 
 
 
-            } else {
+            }else if (responseData.error==="Username must be at least 4 characters long") {
+                //alert("Username is already taken. Please choose a different username.");
+                enqueueSnackbar("Username must be at least 4 characters long.",{variant:'error'},{ autoHideDuration: 4000 })
+            }
+            else {
                 //alert("Registration Failed");
                 enqueueSnackbar("Registration Failed...",{variant:'error'},{ autoHideDuration: 2000 })
             }

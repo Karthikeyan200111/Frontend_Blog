@@ -16,9 +16,7 @@ function App() {
     document.title = 'MyBlog';
 
     // Optional: Reset the title when the component unmounts
-    return () => {
-      document.title = 'MyBlog';
-    };
+    
   }, []);
 
   return (

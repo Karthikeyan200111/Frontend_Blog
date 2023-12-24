@@ -57,7 +57,7 @@ if(response.ok){
   const username = userInfo?.username;
 
   return (
-    <header className="flex md:justify-between gap-5 mb-20 items-baseline">
+    <header className="flex justify-between gap-5 mb-20 items-baseline">
         
         <Link to="/" className="font-bold md:text-2xl test-sm">
         <div className='flex md:gap-2 '>
@@ -86,7 +86,7 @@ if(response.ok){
         <nav className="flex md:gap-5 ">
           {username && (
             <div className="flex items-baseline md:gap-7 gap-3">
-              <Link to={'/create'} className="md:text-xl text-xs font-semibold">
+              <Link to={'/create'} className="md:text-xl text-xs font-semibold ">
               <div className='flex md:gap-1 items-baseline justify-between '>
                 
                 <div>Create New Post</div>
@@ -103,8 +103,8 @@ if(response.ok){
             </div>
           )}
           {!username && (
-            <>
-              <Link to="/login" className="md:text-sm font-bold">
+            <div className='flex gap-1'>
+              <Link to="/login" className="md:text-xl font-bold ">
               <div className='flex md:gap-0 items-baseline justify-between'>
                 
                  <div>Login</div>
@@ -118,7 +118,7 @@ if(response.ok){
                 <div> <FaCashRegister /></div>
              </div>
               </Link>
-            </>
+            </div>
           )}
         </nav>
       {/* )} */}
