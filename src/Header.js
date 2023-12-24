@@ -47,7 +47,6 @@ if(response.ok){
      
     minHeight: "100vh",  // Center vertically
     margin: "0 auto",
-    borderColor: "red",
     color: '#767676'
     };
     
