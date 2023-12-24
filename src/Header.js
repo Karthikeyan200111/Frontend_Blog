@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import ClipLoader from "react-spinners/ClipLoader";
+
 import { enqueueSnackbar } from 'notistack';
 
 import { UserContext } from './UserContext';
@@ -12,7 +12,7 @@ import { MdOutlineCreateNewFolder } from "react-icons/md";
 
 export default function Header() {
   const { setUserInfo, userInfo } = useContext(UserContext);
-  const [loadingS, setLoading] = useState(true);
+//  const [loadingS, setLoading] = useState(true);
 
   useEffect(() => {
     fetch('https://blog-syj3.onrender.com/profile', {
@@ -21,12 +21,12 @@ export default function Header() {
       .then((response) => {
         response.json().then((userInfo) => {
           setUserInfo(userInfo);
-          setLoading(false); // Set loading to false once data is fetched
+          // setLoading(false); // Set loading to false once data is fetched
         });
       })
       .catch((error) => {
         console.error('Error fetching user profile:', error);
-        setLoading(false); // Set loading to false on error as well
+        // setLoading(false); // Set loading to false on error as well
       });
   }, [setUserInfo]);
 
@@ -43,16 +43,16 @@ if(response.ok){
     setUserInfo(null);
   }
 
-  const override = {
+  // const override = {
      
-    minHeight: "100vh",  // Center vertically
-    margin: "0 auto",
+  //   minHeight: "100vh",  // Center vertically
+  //   margin: "0 auto",
     
-    color: '#767676'
-    };
+  //   color: '#767676'
+  //   };
     
-    const color = '#767676';  // Define color
-    const loading = true;  // Define loading
+  //   const color = '#767676';  // Define color
+  //   const loading = true;  // Define loading
 
   const username = userInfo?.username;
 
@@ -70,7 +70,7 @@ if(response.ok){
 
       
 
-      {loadingS ? (
+      {/* {loadingS ? (
         // Show loading spinner while fetching data
         <div className="flex  items-center justify-center  mx-auto">
             <ClipLoader className=" mt-20"
@@ -82,7 +82,7 @@ if(response.ok){
           data-testid="loader"
         />
       </div>
-      ) : (
+      ) : ( */}
         <nav className="flex md:gap-5 ">
           {username && (
             <div className="flex items-baseline md:gap-7 gap-4">
@@ -121,7 +121,7 @@ if(response.ok){
             </>
           )}
         </nav>
-      )}
+      {/* )} */}
     </header>
   );
 }
