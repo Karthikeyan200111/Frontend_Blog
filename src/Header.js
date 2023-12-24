@@ -57,7 +57,7 @@ if(response.ok){
   const username = userInfo?.username;
 
   return (
-    <header className="flex justify-between mb-20 items-baseline">
+    <header className="flex md:justify-between gap-5 mb-20 items-baseline">
         
         <Link to="/" className="font-bold md:text-2xl test-sm">
         <div className='flex md:gap-2 '>
@@ -70,7 +70,7 @@ if(response.ok){
 
       
 
-      {/* {loadingS ? (
+      {/* { {loadingS ? (
         // Show loading spinner while fetching data
         <div className="flex  items-center justify-center  mx-auto">
             <ClipLoader className=" mt-20"
@@ -82,12 +82,12 @@ if(response.ok){
           data-testid="loader"
         />
       </div>
-      ) : ( */}
+      ) :  */}
         <nav className="flex md:gap-5 ">
           {username && (
-            <div className="flex items-baseline md:gap-7 gap-4">
-              <Link to={'/create'} className="text-xs md:text-xl font-semibold">
-              <div className='flex md:gap-2 md:items-baseline gap-1 '>
+            <div className="flex items-baseline md:gap-7 gap-3">
+              <Link to={'/create'} className="md:text-xl text-xs font-semibold">
+              <div className='flex md:gap-1 items-baseline justify-between '>
                 
                 <div>Create New Post</div>
                 <div> <MdOutlineCreateNewFolder  /></div>
@@ -96,7 +96,7 @@ if(response.ok){
               <button className="hover:cursor-pointer text-xs md:text-xl font-semibold" onClick={logout}>
               <div className='flex gap-2 items-baseline '>
                 
-                <div>Login</div>
+                <div>Logout</div>
                 <div> <TbLogout2  /></div>
              </div>
               </button>
@@ -104,15 +104,15 @@ if(response.ok){
           )}
           {!username && (
             <>
-              <Link to="/login" className="md:text-xl font-bold">
-              <div className='flex gap-2 items-baseline '>
+              <Link to="/login" className="md:text-sm font-bold">
+              <div className='flex md:gap-0 items-baseline justify-between'>
                 
                  <div>Login</div>
                  <div> <BiLogIn /></div>
               </div>
               </Link>
               <Link to="/register" className="md:text-xl font-bold">
-              <div className='flex gap-2 items-baseline '>
+              <div className='flex md:gap-1 items-baseline gap-1 mx-1 '>
                 
                 <div>Register</div>
                 <div> <FaCashRegister /></div>

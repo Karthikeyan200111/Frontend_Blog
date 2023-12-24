@@ -31,11 +31,11 @@ export default function RegisterPage(){
             
             if (responseData.error==="Username already taken") {
                 //alert("Username is already taken. Please choose a different username.");
-                enqueueSnackbar("Username is already taken. Please choose a different username.",{variant:'error'},{ autoHideDuration: 4000 })
+                enqueueSnackbar("Username is already taken. Please choose a different username.",{variant:'error'},{ autoHideDuration: 4001 })
             }
             else if(responseData.error==="Phone Number already taken"){
                // alert("Phone Number is already taken. Please choose a different Phone Number.");
-            enqueueSnackbar("Phone Number is already taken. Please choose a different Phone Number.",{variant:'error'},{ autoHideDuration: 4000 })
+            enqueueSnackbar("Phone Number is already taken. Please choose a different Phone Number.",{variant:'error'},{ autoHideDuration: 4001 })
 
 
 
