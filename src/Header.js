@@ -14,21 +14,29 @@ export default function Header() {
   const { setUserInfo, userInfo } = useContext(UserContext);
 //  const [loadingS, setLoading] = useState(true);
 
-  useEffect(async() => {
-    await fetch('https://blog-syj3.onrender.com/profile', {
-      credentials: 'include'
-    })
-      .then((response) => {
-        response.json().then((userInfo) => {
-          setUserInfo(userInfo);
-          // setLoading(false); // Set loading to false once data is fetched
-        });
-      })
-      .catch((error) => {
-        console.error('Error fetching user profile:', error);
-        // setLoading(false); // Set loading to false on error as well
+  useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const response = await fetch('https://blog-syj3.onrender.com/profile', {
+        credentials: 'include'
       });
-  }, [setUserInfo]);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const userInfo = await response.json();
+      setUserInfo(userInfo);
+      // setLoading(false); // Set loading to false once data is fetched
+    } catch (error) {
+      console.error('Error fetching user profile:', error);
+      // setLoading(false); // Set loading to false on error as well
+    }
+  };
+
+  fetchData();
+}, [setUserInfo]);
+
 
  async function logout() {
     const response=await fetch('https://blog-syj3.onrender.com/logout', {
