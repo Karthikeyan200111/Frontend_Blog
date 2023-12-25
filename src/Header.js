@@ -28,7 +28,7 @@ export default function Header() {
         console.error('Error fetching user profile:', error);
         // setLoading(false); // Set loading to false on error as well
       });
-  }, [setUserInfo]);
+  }, []);
 
  async function logout() {
     const response=await fetch('https://blog-syj3.onrender.com/logout', {
