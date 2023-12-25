@@ -18,7 +18,8 @@ export default function Header() {
   const fetchData = async () => {
     try {
       const response = await fetch('https://blog-syj3.onrender.com/profile', {
-        credentials: 'include'
+        credentials: 'include',
+        method:'GET'
       });
 
       if (!response.ok) {
