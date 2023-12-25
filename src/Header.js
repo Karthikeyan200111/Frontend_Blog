@@ -14,8 +14,8 @@ export default function Header() {
   const { setUserInfo, userInfo } = useContext(UserContext);
 //  const [loadingS, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetch('https://blog-syj3.onrender.com/profile', {
+  useEffect(async() => {
+    await fetch('https://blog-syj3.onrender.com/profile', {
       credentials: 'include'
     })
       .then((response) => {
@@ -28,7 +28,7 @@ export default function Header() {
         console.error('Error fetching user profile:', error);
         // setLoading(false); // Set loading to false on error as well
       });
-  }, [userInfo]);
+  }, [setUserInfo]);
 
  async function logout() {
     const response=await fetch('https://blog-syj3.onrender.com/logout', {
