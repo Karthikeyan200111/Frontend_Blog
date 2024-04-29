@@ -10,9 +10,10 @@ const EditorPage = () => {
   const [files, setFiles] = useState("");
   const [redirect, setRedirect] = useState(false);
   const { id } = useParams();
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
-    fetch("https://blog-syj3.onrender.com/post/" + id).then((response) => {
+    fetch(`https://backend-golb.onrender.com/post/` + id).then((response) => {
       response.json().then((postInfo) => {
         setTitle(postInfo.title);
         setSummary(postInfo.summary);
@@ -20,7 +21,7 @@ const EditorPage = () => {
         setFiles(postInfo.file);
       });
     });
-  }, [id]);
+  }, []);
 
   async function editPost(e) {
     const data = new FormData();
@@ -35,7 +36,7 @@ const EditorPage = () => {
 
     e.preventDefault();
 
-    const response = await fetch("https://blog-syj3.onrender.com/post", {
+    const response = await fetch(`https://backend-golb.onrender.com/post/`, {
       method: "PUT",
       body: data,
       credentials: "include",

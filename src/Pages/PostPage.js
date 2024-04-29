@@ -18,6 +18,7 @@ const PostPage = () => {
 
   useEffect(() => {
     const fetchPostInfo = async () => {
+      //https://blog-syj3.onrender.com/post/${id}
       try {
         const response = await fetch(`https://blog-syj3.onrender.com/post/${id}`);
         if (!response.ok) {
@@ -62,7 +63,7 @@ const PostPage = () => {
 
   async function deletePost() {
     try {
-      const response = await fetch(`https://blog-syj3.onrender.com/post/${postInfo._id}`, {
+      const response = await fetch(`https://backend-golb.onrender.com/post/${postInfo._id}`, {
         method: 'DELETE',
         credentials: 'include',
       });
@@ -85,7 +86,7 @@ const PostPage = () => {
     <div className={`flex flex-col gap-10 items-center `}>
       <div className="md:w-2/3 w-full">
         <img
-          src={`https://blog-syj3.onrender.com/${postInfo.files}`}
+          src={`https://backend-golb.onrender.com/${postInfo.files}`}
           alt={postInfo.title}
           className='rounded-md'
         />

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { enqueueSnackbar } from 'notistack';
 
-import { UserContext } from './UserContext';
+import { UserContext } from '../UserContext';
 import { FaBlog } from "react-icons/fa6";
 import { BiLogIn } from "react-icons/bi";
 import { TbLogout2 } from "react-icons/tb";
@@ -40,7 +40,7 @@ export default function Header() {
 
 
  async function logout() {
-    const response=await fetch('https://blog-syj3.onrender.com/logout', {
+    const response=await fetch('https://backend-golb.onrender.com/logout', {
       credentials: 'include',
       method: 'POST'
     });

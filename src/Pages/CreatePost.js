@@ -5,7 +5,7 @@ import 'react-quill/dist/quill.snow.css';
 import { Navigate } from 'react-router-dom';
 import Editor from '../Editor';
 
-
+//https://backend-golb.onrender.com/
 
 
 const CreatePost = () => {
@@ -17,37 +17,47 @@ const CreatePost = () => {
   const[redirect,setRedirect]=useState(false)
   
 
-  async function createPost(e){
-    const data =new FormData();
-    data.set('title',title)
-    data.set('content',content)
-    data.set('summary',summary)
-    data.set('files',files[0])
-
-    
-    e.preventDefault()
-    //http://localhost:4000/ //https://blog-syj3.onrender.com/post
-
-    const response=await fetch("https://blog-syj3.onrender.com/post",{
-      method:'POST',
-      body:data,
-      credentials:'include'
-    })
-    const responseData = await response.json();
-
-    if (responseData.error==="No file uploaded") {
-     // alert("Please upload  a Photo to Post the Blog.");
-      enqueueSnackbar("Please upload  a Photo to Post...",{variant:'error'},{ autoHideDuration: 2000 })
-  }
-
-
-
-
-    if(response.ok){
-      enqueueSnackbar("Posted Successfully...",{variant:'success'},{ autoHideDuration: 2000 })
-      setRedirect(true)
+  async function createPost(e) {
+    e.preventDefault();
+  
+    const data = new FormData();
+    data.set('title', title);
+    data.set('content', content);
+    data.set('summary', summary);
+  
+    if (files && files.length > 0) {
+      data.set('files', files[0]);
+    }
+    for (const [key, value] of data.entries()) {
+      console.log(`${key}: ${value}`);
+    }
+  
+    try {
+      const response = await fetch(`https://backend-golb.onrender.com/posts`, {
+        method: 'POST',
+        body: data,
+        credentials: 'include'
+      });
+      console.log(response)
+      const responseData = await response.json();
+      console.log(responseData)
+  
+      if (response.ok) {
+        enqueueSnackbar("Posted Successfully...", { variant: 'success', autoHideDuration: 2000 });
+        setRedirect(true);
+      } else if (responseData.error === "No file uploaded") {
+        enqueueSnackbar("Please upload a Photo to Post...", { variant: 'error', autoHideDuration: 2000 });
+      } else {
+        // Handle other error scenarios
+        console.error("Error in the response:", responseData.error);
+        enqueueSnackbar("An error occurred. Please try again.", { variant: 'error', autoHideDuration: 2000 });
+      }
+    } catch (error) {
+      console.error("Error:", error.message);
+      enqueueSnackbar("An unexpected error occurred. Please try again.", { variant: 'error', autoHideDuration: 2000 });
     }
   }
+  
   if(redirect){
     return <Navigate to={'/'} />
   }

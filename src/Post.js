@@ -1,13 +1,14 @@
 import formatISO9075 from "date-fns/formatISO9075"
 import {Link} from "react-router-dom"
 export default function Post({_id,title,summary,content,files,createdAt,author}){
+  const apiUrl = process.env.REACT_APP_API_URL;
 
     return(
         <section id='feed' >
         <div className='flex gap-5 my-10 flex-col md:flex-row  '>
           <div className="md:w-1/2 w-full" >
             <Link to={`/post/${_id}`}>
-              <img src={'https://blog-syj3.onrender.com/'+files} alt="img" className="rounded-md" />
+              <img src={'https://backend-golb.onrender.com/'+files} alt="img" className="rounded-md" />
             </Link>
            
           </div>
