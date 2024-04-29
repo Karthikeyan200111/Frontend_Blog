@@ -1,7 +1,7 @@
 import formatISO9075 from "date-fns/formatISO9075"
 import {Link} from "react-router-dom"
 export default function Post({_id,title,summary,content,files,createdAt,author}){
-  const apiUrl = process.env.REACT_APP_API_URL;
+  // const apiUrl = process.env.REACT_APP_API_URL;
 
     return(
         <section id='feed' >

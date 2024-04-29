@@ -10,7 +10,7 @@ const EditorPage = () => {
   const [files, setFiles] = useState("");
   const [redirect, setRedirect] = useState(false);
   const { id } = useParams();
-  const apiUrl = process.env.REACT_APP_API_URL;
+
 
   useEffect(() => {
     fetch(`https://backend-golb.onrender.com/post/` + id).then((response) => {
@@ -21,7 +21,7 @@ const EditorPage = () => {
         setFiles(postInfo.file);
       });
     });
-  }, []);
+  }, [id]);
 
   async function editPost(e) {
     const data = new FormData();
