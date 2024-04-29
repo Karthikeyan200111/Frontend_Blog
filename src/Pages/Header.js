@@ -36,7 +36,7 @@ export default function Header() {
   };
 
   fetchData();
-}, []);
+}, [setUserInfo]);
 
 
  async function logout() {
