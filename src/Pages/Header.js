@@ -9,17 +9,27 @@ import { BiLogIn } from "react-icons/bi";
 import { TbLogout2 } from "react-icons/tb";
 import { FaCashRegister } from "react-icons/fa6";
 import { MdOutlineCreateNewFolder } from "react-icons/md";
+import Cookies from 'js-cookie';
+
 
 export default function Header() {
   const { setUserInfo, userInfo } = useContext(UserContext);
 //  const [loadingS, setLoading] = useState(true);
 
+
+
   useEffect(() => {
   const fetchData = async () => {
     try {
-      const response = await fetch('https://blog-syj3.onrender.com/profile', {
+      const token = localStorage.getItem('token');
+      console.log(token)
+     console.log(token)
+      const response = await fetch(`${process.env.REACT_APP_URL}profile`, {
         credentials: 'include',
-        method:'GET'
+        method:'GET',
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        },
       });
 
       if (!response.ok) {
@@ -40,11 +50,12 @@ export default function Header() {
 
 
  async function logout() {
-    const response=await fetch('https://backend-golb.onrender.com/logout', {
+    const response=await fetch(`${process.env.REACT_APP_URL}logout`, {
       credentials: 'include',
       method: 'POST'
     });
 if(response.ok){
+  localStorage.removeItem('token');
     enqueueSnackbar("Logout Successfull...",{variant:'success'},{ autoHideDuration: 2000 })
 }else{
     enqueueSnackbar("Logout Failed...",{variant:'error'},{ autoHideDuration: 2000 })

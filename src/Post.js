@@ -8,7 +8,7 @@ export default function Post({_id,title,summary,content,files,createdAt,author})
         <div className='flex gap-5 my-10 flex-col md:flex-row  '>
           <div className="md:w-1/2 w-full" >
             <Link to={`/post/${_id}`}>
-              <img src={'https://backend-golb.onrender.com/'+files} alt="img" className="rounded-md" />
+              <img src={'https://back-334i.onrender.com/'+files} alt="img" className="rounded-md" />
             </Link>
            
           </div>

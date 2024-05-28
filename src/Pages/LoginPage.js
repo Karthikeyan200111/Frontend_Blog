@@ -13,7 +13,7 @@ const{setUserInfo}=useContext(UserContext)
 
 async function login(e){
 e.preventDefault();
-const response=await fetch("https://backend-golb.onrender.com/login",{
+const response=await fetch(`${process.env.REACT_APP_URL}login`,{
          method:"POST",
          body:JSON.stringify({username,password}),
         headers:{'Content-Type':'application/json'},
@@ -25,11 +25,14 @@ const response=await fetch("https://backend-golb.onrender.com/login",{
 
 
 if(response.ok){
+    
+    const responseData=await response.json();
+    console.log(responseData)
+    const { token } = responseData
+    
+    localStorage.setItem('token', token);
     enqueueSnackbar("Login Successful...",{variant:'success'},{ autoHideDuration: 1000 })
-    response.json().then(UserInfo=>{
-        setUserInfo(UserInfo)
-        setRedirect(true)
-    })
+    setRedirect(true)
     
 }else{
     

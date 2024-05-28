@@ -1,9 +1,11 @@
+import Cookies from 'js-cookie';
 import { enqueueSnackbar } from 'notistack';
 import React, { useState } from 'react'
 
 import 'react-quill/dist/quill.snow.css';
 import { Navigate } from 'react-router-dom';
 import Editor from '../Editor';
+
 
 //https://backend-golb.onrender.com/
 
@@ -33,10 +35,15 @@ const CreatePost = () => {
     }
   
     try {
-      const response = await fetch(`https://backend-golb.onrender.com/posts`, {
+      const token = localStorage.getItem('token');
+      console.log(token)
+      const response = await fetch(`https://back-334i.onrender.com/post`, {
         method: 'POST',
         body: data,
-        credentials: 'include'
+        credentials: 'include',
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        }
       });
       console.log(response)
       const responseData = await response.json();

@@ -2,6 +2,7 @@ import { enqueueSnackbar } from "notistack";
 import React, { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import Editor from "../Editor";
+import Cookies from 'js-cookie';
 
 const EditorPage = () => {
   const [title, setTitle] = useState("");
@@ -13,7 +14,7 @@ const EditorPage = () => {
 
 
   useEffect(() => {
-    fetch(`https://backend-golb.onrender.com/post/` + id).then((response) => {
+    fetch(`${process.env.REACT_APP_URL}` + id).then((response) => {
       response.json().then((postInfo) => {
         setTitle(postInfo.title);
         setSummary(postInfo.summary);
@@ -35,11 +36,14 @@ const EditorPage = () => {
     }
 
     e.preventDefault();
-
-    const response = await fetch(`https://backend-golb.onrender.com/post/`, {
+    const token = localStorage.getItem('token');
+    const response = await fetch(`${process.env.REACT_APP_URL}post/`, {
       method: "PUT",
       body: data,
       credentials: "include",
+      headers: {
+        "Authorization": `Bearer ${token}`,
+      }
     });
     if (response.ok) {
       enqueueSnackbar("Edited Successfully...",{variant:'success'},{ autoHideDuration: 2000 })

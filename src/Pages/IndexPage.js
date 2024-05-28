@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ClipLoader from "react-spinners/ClipLoader"; // Import the ClipLoader component
 import Post from "../Post";
+import { UserContext } from "../UserContext";
 
 export default function IndexPage() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true); // Add loading state
+  const { setUserInfo, userInfo } = useContext(UserContext);
 
   useEffect(() => {
-    fetch("https://backend-golb.onrender.com/post")
+    fetch(`${process.env.REACT_APP_URL}post`)
       .then((response) => response.json())
       .then((posts) => {
         setPosts(posts);
@@ -17,6 +19,32 @@ export default function IndexPage() {
         console.error("Error fetching posts:", error);
         setLoading(false); // Set loading to false in case of an error
       });
+
+      const fetchData = async () => {
+        try {
+          const token = localStorage.getItem('token');
+          console.log(token)
+          const response = await fetch(`${process.env.REACT_APP_URL}profile`, {
+            credentials: 'include',
+            method: 'GET',
+            headers: {
+              "Authorization": `Bearer ${token}`,
+            },
+          });
+  
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+  
+          const userInfo = await response.json();
+          setUserInfo(userInfo);
+          // setLoading(false); // Set loading to false once data is fetched
+        } catch (error) {
+          console.error('Error fetching user profile:', error);
+          // setLoading(false); // Set loading to false on error as well
+        }
+      }
+        fetchData()
   }, []);
 
   return (
