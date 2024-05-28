@@ -1,4 +1,4 @@
-import Cookies from 'js-cookie';
+
 import { enqueueSnackbar } from 'notistack';
 import React, { useState } from 'react'
 

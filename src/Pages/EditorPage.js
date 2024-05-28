@@ -2,7 +2,7 @@ import { enqueueSnackbar } from "notistack";
 import React, { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import Editor from "../Editor";
-import Cookies from 'js-cookie';
+
 
 const EditorPage = () => {
   const [title, setTitle] = useState("");
