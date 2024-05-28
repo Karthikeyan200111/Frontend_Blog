@@ -6,7 +6,7 @@ import { UserContext } from "../UserContext";
 export default function IndexPage() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true); // Add loading state
-  const { setUserInfo, userInfo } = useContext(UserContext);
+  const { setUserInfo } = useContext(UserContext);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_URL}post`)
@@ -45,7 +45,7 @@ export default function IndexPage() {
         }
       }
         fetchData()
-  }, []);
+  }, [setUserInfo]);
 
   return (
     <>

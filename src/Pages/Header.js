@@ -9,7 +9,7 @@ import { BiLogIn } from "react-icons/bi";
 import { TbLogout2 } from "react-icons/tb";
 import { FaCashRegister } from "react-icons/fa6";
 import { MdOutlineCreateNewFolder } from "react-icons/md";
-import Cookies from 'js-cookie';
+
 
 
 export default function Header() {

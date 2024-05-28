@@ -12,7 +12,7 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 
 const PostPage = () => {
   const [postInfo, setPostInfo] = useState(null);
-  const { setUserInfo, userInfo } = useContext(UserContext);
+  const {  userInfo } = useContext(UserContext);
 
   const { id } = useParams();
 
